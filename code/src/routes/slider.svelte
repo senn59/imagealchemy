@@ -15,7 +15,7 @@
     <label for="range">{name}</label>
 </div>
 
-<style>
+<style lang="scss">
     /* .slider-slider {
         width: 100px;
         height: 10px;
