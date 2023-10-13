@@ -17,7 +17,7 @@
             <button>Download</button>
         </div>
     </div>
-    <img style={imageStyle} src="https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png" alt="">
+    <img id="edited" style={imageStyle} src="https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png" alt="">
     <div class="sidebar right">
     </div>
 </div>
@@ -27,8 +27,9 @@
     $grey: #2E2E2E;
     $logoText: #560074;
     $margin: 100px;
-    img {
-        width: 800px;
+    #edited {
+        width: 40%;
+        max-width: 55%;
     }
     .wrapper {
         display: flex;
