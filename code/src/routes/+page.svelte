@@ -1,6 +1,10 @@
 <script lang="ts">
     import Sliders from "./sliders.svelte";
-    let imageStyle: string; 
+    import Toolbar from "./toolbar.svelte";
+    let filterStyle: string;
+    let transformStyle: string;
+    let style: string;
+    $: style = filterStyle + transformStyle;
 </script>
 
 <div class="wrapper">
@@ -10,14 +14,19 @@
             <h1>ImageAlchemy</h1>
         </div>
         <div class="sliders">
-            <Sliders bind:imageStyle />
+            <Sliders bind:filterStyle />
         </div>
         <div class="buttons">
             <button>Copy</button>
             <button>Download</button>
         </div>
     </div>
-    <img id="edited" style={imageStyle} src="https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png" alt="">
+    <div class="middle">
+        <img id="edited" style={style} src="https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png" alt="">
+        <div class="toolbar">
+            <Toolbar bind:transformStyle />
+        </div>
+    </div>
     <div class="sidebar right">
     </div>
 </div>
@@ -28,7 +37,7 @@
     $logoText: #560074;
     $margin: 100px;
     #edited {
-        width: 40%;
+        width: 100%;
         max-width: 55%;
     }
     .wrapper {
@@ -73,6 +82,19 @@
         .buttons {
             padding-bottom: 50px;
             width: 100%;
+        }
+    }
+    .middle {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        .toolbar {
+            position: absolute;
+            bottom: 10%;
+
         }
     }
 </style>
