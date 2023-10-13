@@ -14,7 +14,7 @@
         Object for adding css filter functions. For more info on available filter functions see the below link.
         https://developer.mozilla.org/en-US/docs/Web/CSS/filter
     */
-    export let imageStyle: string = ""
+    export let filterStyle: string = ""
     let filters: {[key: string]: Filter}  = {
         "saturation": {
             value: 100,
@@ -41,7 +41,8 @@
             let style: string = `${filter.cssFunc}(${filter.value}${filter.suffix})`;
             styles.push(style);
         })
-        imageStyle = `filter: ${styles.join("")};`;
+        filterStyle = `filter: ${styles.join("")};`;
+        console.log(filterStyle);
     }
 </script>
 
