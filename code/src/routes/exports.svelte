@@ -1,6 +1,8 @@
 <script lang="ts">
-	import { onMount } from "svelte";
-
+    export let filterStyle: string;
+    export let transformStyle: string;
+    let parsedFilterStyle: string;
+    let shouldFlip: boolean = false;
     const download = () => {
         let imageElement: any = document.getElementById("edited");
         let canvas = document.createElement("canvas");
@@ -11,18 +13,29 @@
         }
         canvas.width = imageElement.naturalWidth;
         canvas.height = imageElement.naturalHeight;
-        ctx.scale(-1, 1);
-        ctx.filter = "sepia(1)";
-        // ctx.clearRect(0,0, canvas.width, canvas.height)
+        ctx.filter = parsedFilterStyle;
+        ctx.clearRect(0,0, canvas.width, canvas.height)
         // ctx.rotate(0);
-        console.log(imageElement.naturalWidth);
-        console.log(imageElement.naturalHeight);
-        ctx.drawImage(imageElement, -canvas.width, 0);
-        window.open(canvas.toDataURL());
+        if (shouldFlip) {
+            ctx.scale(-1, 1);
+            ctx.drawImage(imageElement, -canvas.width, 0);
+        } else {
+            ctx.drawImage(imageElement, 0, 0);
+        }
+        ctx.drawImage(imageElement, 0, 0);
+        window.open(canvas.toDataURL(), "image.png");
 
     }
     const copy = () => {
         console.log("Copy");
+    }
+    $: {
+        if (filterStyle) {
+            parsedFilterStyle = filterStyle.split(" ")[1].slice(0, -1).replace(")", ") ");
+        }
+        if (transformStyle) {
+            shouldFlip = transformStyle.includes("-1") ? true : false;
+        }
     }
 </script>
 <button on:click={copy}>Copy</button>

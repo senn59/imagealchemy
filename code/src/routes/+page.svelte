@@ -18,7 +18,7 @@
             <Sliders bind:filterStyle />
         </div>
         <div class="buttons">
-            <Exports />
+            <Exports bind:filterStyle bind:transformStyle />
         </div>
     </div>
     <div class="middle">

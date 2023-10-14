@@ -32,6 +32,14 @@
             suffix: "deg",
             cssFunc: "hue-rotate"
        },
+        "sepia": {
+            value: 0,
+            default: 0,
+            min: 0,
+            max: 100,
+            suffix: "%",
+            cssFunc: "sepia"
+       },
     };
 
     $: {
