@@ -22,7 +22,6 @@
         } else {
             ctx.drawImage(imageElement, 0, 0);
         }
-        ctx.drawImage(imageElement, 0, 0);
         window.open(canvas.toDataURL(), "image.png");
 
     }
