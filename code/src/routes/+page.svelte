@@ -1,12 +1,13 @@
 <script lang="ts">
     import Sliders from "./sliders.svelte";
     import Toolbar from "./toolbar.svelte";
+    import Exports from "./exports.svelte";
     let filterStyle: string;
     let transformStyle: string;
     let style: string;
+    let imageElement: HTMLImageElement;
     $: style = filterStyle + transformStyle;
 </script>
-
 <div class="wrapper">
     <div class="sidebar left">
         <div class="logo">
@@ -17,12 +18,11 @@
             <Sliders bind:filterStyle />
         </div>
         <div class="buttons">
-            <button>Copy</button>
-            <button>Download</button>
+            <Exports />
         </div>
     </div>
     <div class="middle">
-        <img id="edited" style={style} src="https://upload.wikimedia.org/wikipedia/commons/b/b6/Image_created_with_a_mobile_phone.png" alt="">
+        <img bind:this={imageElement} id="edited" style={style} crossorigin="anonymous" src="https://www.getpushing.com/wp-content/uploads/2016/10/camera-960x640.jpg" alt="">
         <div class="toolbar">
             <Toolbar bind:transformStyle />
         </div>
@@ -47,11 +47,11 @@
         background-color: #F4F4F4;
     }
     .sidebar {
-        width: 20%;
+        width: 30%;
         height: 100vh;
         outline: $grey 8px solid;
     }
-    .sidebar, .left {
+    .left {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
