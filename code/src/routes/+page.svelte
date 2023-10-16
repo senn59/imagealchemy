@@ -82,6 +82,8 @@
         .buttons {
             padding-bottom: 50px;
             width: 100%;
+            display: flex;
+            justify-content: space-around;
         }
     }
     .middle {
@@ -94,7 +96,7 @@
         .toolbar {
             position: absolute;
             bottom: 10%;
-
+            display: flex;
         }
     }
 </style>
