@@ -3,7 +3,7 @@
     export let filterStyle: string;
     export let transformStyle: string;
 
-    const download = () => {
+    const getCanvasImage = (): HTMLCanvasElement | undefined => {
         let imageElement: any = document.getElementById("edited");
         let canvas = document.createElement("canvas");
         let ctx: CanvasRenderingContext2D | null = canvas.getContext("2d");
@@ -11,14 +11,22 @@
             console.log("bad context")
             return;
         }
+
         canvas.width = imageElement.naturalWidth;
         canvas.height = imageElement.naturalHeight;
+
         ctx.filter = getParsedFilters(filterStyle);
         ctx.translate(canvas.width / 2, canvas.height / 2);
         ctx.clearRect(0,0, canvas.width, canvas.height);
-
         if (shouldFlip(transformStyle)) ctx.scale(-1, 1);
+
         ctx.drawImage(imageElement, -canvas.width/2, -canvas.height/2);
+        return canvas;
+    }
+
+    const download = () => {
+        const canvas = getCanvasImage();
+        if (!canvas) return;
         window.open(canvas.toDataURL("image/png"))
         // let newWindow: Window | null = window.open();
         // if (newWindow == null) return;
@@ -26,7 +34,8 @@
         // newWindow.document.write(`<img src="${canvas.toDataURL("image/png")}">`)
     }
     const copy = () => {
-        console.log("Copy");
+        const canvas = getCanvasImage();
+        if (!canvas) return;
     }
     const getParsedFilters = (styles: string): string => {
         if (styles) {
