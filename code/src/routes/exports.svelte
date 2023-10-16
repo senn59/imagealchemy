@@ -3,6 +3,30 @@
     export let filterStyle: string;
     export let transformStyle: string;
 
+    const download = () => {
+        const canvas = getCanvasImage();
+        if (!canvas) return;
+        window.open(canvas.toDataURL("image/png")) /* for testing purposes */
+        // let newWindow: Window | null = window.open();
+        // if (newWindow == null) return;
+        // newWindow.document.open();
+        // newWindow.document.write(`<img src="${canvas.toDataURL("image/png")}">`)
+    }
+
+    const copy = () => {
+        const canvas = getCanvasImage();
+        if (!canvas) return;
+        if (navigator.userAgent.includes("Firefox")) {
+            window.open(canvas.toDataURL("image/png"))
+        } else {
+            canvas.toBlob(function(blob) { 
+                if (!blob) return;
+                const item = new ClipboardItem({ "image/png": blob });
+                navigator.clipboard.write([item]); 
+            });
+        }
+    }
+
     const getCanvasImage = (): HTMLCanvasElement | undefined => {
         let imageElement: any = document.getElementById("edited");
         let canvas = document.createElement("canvas");
@@ -23,30 +47,18 @@
         ctx.drawImage(imageElement, -canvas.width/2, -canvas.height/2);
         return canvas;
     }
-
-    const download = () => {
-        const canvas = getCanvasImage();
-        if (!canvas) return;
-        window.open(canvas.toDataURL("image/png"))
-        // let newWindow: Window | null = window.open();
-        // if (newWindow == null) return;
-        // newWindow.document.open();
-        // newWindow.document.write(`<img src="${canvas.toDataURL("image/png")}">`)
-    }
-    const copy = () => {
-        const canvas = getCanvasImage();
-        if (!canvas) return;
-    }
     const getParsedFilters = (styles: string): string => {
         if (styles) {
             return styles.split(" ")[1].slice(0, -1).replace(")", ") ");
         }
         return ""
     }
+
     const shouldFlip = (styles: string): boolean => {
         if (styles) return styles.includes("-1") ? true : false;
         return false;
     }
+
     const getRotation = (styles: string): number => {
         if (styles) {
             let rotationString = transformStyle.split(" ")[1].split("(")[1].split(")")[0].slice(0, -3);
