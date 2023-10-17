@@ -33,8 +33,7 @@
 
 
 <style lang="scss">
-    $grey: #2E2E2E;
-    $logoText: #560074;
+    @import "./colors.scss";
     $margin: 100px;
     #edited {
         width: 100%;
@@ -64,7 +63,7 @@
             width: 100%;
             h1 {
                 margin-top: 5px;
-                color: #560074;
+                color: $logoText;
                 font-size: 48px;
                 font-weight: 900;
             }

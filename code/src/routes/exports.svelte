@@ -78,7 +78,7 @@
 </button>
 
 <style lang="scss">
-    $outline: #2E2E2E;
+    @import "./colors";
     button {
         border: 0;
         font-size: 20px;
@@ -89,8 +89,8 @@
         padding: 2px 10px;
         cursor: pointer;
         box-shadow: 
-            $outline 0 0 0 4px,
-            $outline 1px 2px 0 6px;
+            $grey 0 0 0 4px,
+            $grey 1px 2px 0 6px;
         color: white;
         span {
             padding-right: 10px;
