@@ -2,11 +2,7 @@
     import Sliders from "./sliders.svelte";
     import Toolbar from "./toolbar.svelte";
     import Exports from "./exports.svelte";
-    let filterStyle: string;
-    let transformStyle: string;
-    let style: string;
-    let imageElement: HTMLImageElement;
-    $: style = filterStyle + transformStyle;
+    import { filterStyle, transformStyle } from "$lib/stores";
 </script>
 <div class="wrapper">
     <div class="sidebar left">
@@ -15,16 +11,16 @@
             <h1>ImageAlchemy</h1>
         </div>
         <div class="sliders">
-            <Sliders bind:filterStyle />
+            <Sliders />
         </div>
         <div class="buttons">
-            <Exports bind:filterStyle bind:transformStyle />
+            <Exports />
         </div>
     </div>
     <div class="middle">
-        <img bind:this={imageElement} id="edited" style={style} crossorigin="anonymous" src="https://www.getpushing.com/wp-content/uploads/2016/10/camera-960x640.jpg" alt="">
+        <img id="edited" style={$filterStyle + $transformStyle} crossorigin="anonymous" src="https://www.getpushing.com/wp-content/uploads/2016/10/camera-960x640.jpg" alt="">
         <div class="toolbar">
-            <Toolbar bind:transformStyle />
+            <Toolbar />
         </div>
     </div>
     <div class="sidebar right">
