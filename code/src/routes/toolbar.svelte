@@ -1,8 +1,10 @@
 <script lang="ts">
     import Icon from "@iconify/svelte";
-    export let transformStyle: string = "";
+    import { transformStyle } from "$lib/stores";
+
     let rotation: number = 0;
     let shouldFlip: boolean = false;
+
     const defaultColor = "2E2E2E";
     const activeColor = "0667D8"
     let flipIconColor = defaultColor;
@@ -23,7 +25,7 @@
         let flipStyle: string = "scaleX(1)";
         let rotationStyle: string = `rotate(${rotation}deg)`;
         if (shouldFlip) flipStyle = "scaleX(-1)";
-        transformStyle = `transform: ${rotationStyle} ${flipStyle};`;
+        transformStyle.set(`transform: ${rotationStyle} ${flipStyle};`);
     }
 </script>
 
