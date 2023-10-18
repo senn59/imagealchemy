@@ -15,14 +15,20 @@
     const copy = () => {
         const canvas = getCanvasImage();
         if (!canvas) return;
-        if (navigator.userAgent.includes("Firefox")) {
-            window.open(canvas.toDataURL("image/png"))
-        } else {
+        /*
+            On Firefox the used clipboard API functions are locked behind "dom.events.asyncClipboard.clipboardItem"
+            which is disabled by default.
+            https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/write#browser_compatibility
+            https://developer.mozilla.org/en-US/docs/Web/API/ClipboardItem#browser_compatibility
+        */
+        if (typeof ClipboardItem === "function") {
             canvas.toBlob(function(blob) { 
                 if (!blob) return;
                 const item = new ClipboardItem({ "image/png": blob });
                 navigator.clipboard.write([item]); 
             });
+        } else {
+            window.open(canvas.toDataURL("image/png"))
         }
     }
 
