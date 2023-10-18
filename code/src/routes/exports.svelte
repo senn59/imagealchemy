@@ -1,7 +1,6 @@
 <script lang="ts">
     import Icon from '@iconify/svelte';
-    export let filterStyle: string;
-    export let transformStyle: string;
+    import { filterStyle, transformStyle } from '$lib/stores';
 
     const download = () => {
         const canvas = getCanvasImage();
@@ -39,10 +38,10 @@
         canvas.width = imageElement.naturalWidth;
         canvas.height = imageElement.naturalHeight;
 
-        ctx.filter = getParsedFilters(filterStyle);
+        ctx.filter = getParsedFilters($filterStyle);
         ctx.translate(canvas.width / 2, canvas.height / 2);
         ctx.clearRect(0,0, canvas.width, canvas.height);
-        if (shouldFlip(transformStyle)) ctx.scale(-1, 1);
+        if (shouldFlip($transformStyle)) ctx.scale(-1, 1);
 
         ctx.drawImage(imageElement, -canvas.width/2, -canvas.height/2);
         return canvas;
@@ -61,7 +60,7 @@
 
     const getRotation = (styles: string): number => {
         if (styles) {
-            let rotationString = transformStyle.split(" ")[1].split("(")[1].split(")")[0].slice(0, -3);
+            let rotationString = $transformStyle.split(" ")[1].split("(")[1].split(")")[0].slice(0, -3);
             return parseInt(rotationString);
         }
         return 0;
