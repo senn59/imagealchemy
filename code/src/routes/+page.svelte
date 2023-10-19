@@ -2,6 +2,7 @@
     import Sliders from "./sliders.svelte";
     import Toolbar from "./toolbar.svelte";
     import Exports from "./exports.svelte";
+    import Presets from "./presets.svelte";
     import { filterStyle, transformStyle } from "$lib/stores";
 </script>
 <div class="wrapper">
@@ -24,8 +25,10 @@
         </div>
     </div>
     <div class="sidebar right">
+        <Presets />
     </div>
 </div>
+
 
 
 <style lang="scss">
