@@ -45,16 +45,38 @@
 <div class="presets">
     {#each Object.keys(presets) as key}
     <div class="preset" id={key}>
-        <img src="{imageSrc}" alt={key} style="{presets[key].css}"/>
-        <p>{key}</p>
-        <button on:click={() => applyPreset(key)}>apply</button>
-
+        <button on:click={() => applyPreset(key)}>
+            <img src="{imageSrc}" alt={key} style="{presets[key].css}"/>
+        </button>
+        <p>{key[0].toUpperCase() + key.slice(1)}</p>
     </div>
     {/each}
 </div>
 
 <style lang="scss">
-    .presets img {
-        width: 300px;
+    @import "./colors";
+    .presets {
+        button {
+            border-radius: 25px;
+            border: 0;
+            background-color: transparent;
+            cursor: pointer;
+            img {
+                background-color: $grey;
+                box-shadow:
+                $grey 0 0 0 4px,
+                $grey 1px 2px 0 4px;
+                width: 250px;
+                height: 200px;
+                object-fit: cover;
+                border-radius: 25px;
+            }
+        }
+        p {
+            margin-top: 5px;
+            font-weight: bold;
+            font-size: 22px;
+            color: $grey;
+        }
     }
 </style>

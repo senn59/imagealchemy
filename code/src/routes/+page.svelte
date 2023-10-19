@@ -25,7 +25,9 @@
         </div>
     </div>
     <div class="sidebar right">
-        <Presets />
+        <div class="presets">
+            <Presets />
+        </div>
     </div>
 </div>
 
@@ -96,5 +98,12 @@
             bottom: 10%;
             display: flex;
         }
+    }
+    .presets {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
     }
 </style>
