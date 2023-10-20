@@ -25,6 +25,7 @@
         </div>
     </div>
     <div class="sidebar right">
+        <h1>Presets</h1>
         <div class="presets">
             <Presets />
         </div>
@@ -47,43 +48,60 @@
         background-color: #F4F4F4;
     }
     .sidebar {
-        width: 30%;
         height: 100vh;
-        outline: $grey 8px solid;
-    }
-    .left {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        background: white;
-        .logo {
+        box-shadow: $grey 0 0 0 8px;
+        &.left {
+            width: 600px;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            padding-top: 50px;
-            width: 100%;
+            justify-content: space-between;
+            background: white;
+            .logo {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding-top: 50px;
+                width: 100%;
+                h1 {
+                    margin-top: 5px;
+                    color: $logoText;
+                    font-size: 48px;
+                    font-weight: 900;
+                }
+                img {
+                width: 30%;
+                }
+            }
+            .sliders {
+                height: 100%;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                padding: 50px 0;
+            }
+            .buttons {
+                padding-bottom: 50px;
+                width: 100%;
+                display: flex;
+                justify-content: space-around;
+            }
+        }
+        &.right {
+            width: 500px;
             h1 {
-                margin-top: 5px;
-                color: $logoText;
-                font-size: 48px;
-                font-weight: 900;
+                font-size: 36px;
+                font-weight: 800;
+                width: 250px;
+                margin: auto;
+                padding: 50px 0 40px 0;
+                color: $grey;
             }
-            img {
-            width: 30%;
+            .presets {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                height: 100%;
             }
-        }
-        .sliders {
-            height: 100%;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            padding: 50px 0;
-        }
-        .buttons {
-            padding-bottom: 50px;
-            width: 100%;
-            display: flex;
-            justify-content: space-around;
         }
     }
     .middle {
@@ -95,15 +113,8 @@
         flex-direction: column;
         .toolbar {
             position: absolute;
-            bottom: 10%;
+            bottom: 40px;
             display: flex;
         }
-    }
-    .presets {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100%;
     }
 </style>

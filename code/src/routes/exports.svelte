@@ -75,11 +75,11 @@
 
 <button class="copy" on:click={copy}>
     <span><Icon icon="ph:copy" color="white" height="30" /></span>
-    Copy
+    COPY
 </button>
 <button class="download" on:click={download}>
     <span><Icon icon="material-symbols:download" color="white" height=30 /></span>
-    Download
+    DOWNLOAD
 </button>
 
 <style lang="scss">
@@ -90,7 +90,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        border-radius: 50px;
+        border-radius: 15px;
         padding: 2px 10px;
         cursor: pointer;
         box-shadow: 
