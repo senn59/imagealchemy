@@ -3,33 +3,46 @@
     let files: FileList;
     const allowedFormats: string[] = ["image/png", "image/jpeg"]
     let fileInput: HTMLInputElement;
+
     $: if (files) {
         const file = files[0];
-        console.log(file.name);
-        const reader = new FileReader();
-        reader.onload = (event) => {
-            if (typeof reader.result === "string") {
-               imageSource.set(reader.result);
-            }
-        }
-        reader.readAsDataURL(file);
+        setImageSource(file)
     }
+
     const handleDrop = (e: DragEvent) => {
         const files = e.dataTransfer?.files;
         if (!files) return;
         for (const file of e.dataTransfer.files) {
             console.log(file.type);
             if (!allowedFormats.includes(file.type)) continue;
-            const reader = new FileReader();
-            reader.onload = (event) => {
-                if (typeof reader.result === "string") {
-                imageSource.set(reader.result);
-                }
-            }
-            reader.readAsDataURL(file);
+            setImageSource(file);
             return;
         }
     }
+
+    const handleClipboardPaste = (e: ClipboardEvent) => {
+        const items =e.clipboardData?.items; 
+        if (!items) return;
+        for (let i=0; i < items.length; i++) {
+            const item: DataTransferItem = items[i];
+            if (item.kind == "file" && allowedFormats.includes(item.type)) {
+                const file: File | null = item.getAsFile();
+                if (!file) return;
+                setImageSource(file);
+            }
+        }
+    }
+
+    const setImageSource = (file: File) => {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            if (typeof reader.result === "string") {
+                imageSource.set(reader.result);
+            }
+        }
+        reader.readAsDataURL(file);
+    }
+
 </script>
 
 <div class="wrapper">
@@ -44,6 +57,8 @@
         </div>
     </form>
 </div>
+
+<svelte:window on:paste={handleClipboardPaste}/>
 
 <style lang="scss">
     @import "./colors.scss";
