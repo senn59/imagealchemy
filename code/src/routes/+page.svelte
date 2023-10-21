@@ -37,6 +37,7 @@
 <style lang="scss">
     @import "./colors.scss";
     $margin: 100px;
+
     #edited {
         width: 100%;
         max-width: 55%;
@@ -73,17 +74,19 @@
                 }
             }
             .sliders {
-                height: 100%;
+                height: 80%;
                 width: 100%;
                 display: flex;
                 flex-direction: column;
-                padding: 50px 0;
+                align-items: center;
+                padding: 100px 0 0 0;
             }
             .buttons {
                 padding-bottom: 50px;
-                width: 100%;
+                width: 80%;
                 display: flex;
-                justify-content: space-around;
+                margin: 0 auto;
+                justify-content: space-between;
             }
         }
         &.right {
