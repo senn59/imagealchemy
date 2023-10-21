@@ -3,8 +3,15 @@
     import Toolbar from "./toolbar.svelte";
     import Exports from "./exports.svelte";
     import Presets from "./presets.svelte";
-    import { filterStyle, transformStyle } from "$lib/stores";
+    import ImageSelect from "./image-select.svelte";
+    import { filterStyle, imageSource, transformStyle } from "$lib/stores";
 </script>
+
+{#if !$imageSource}
+    <div class="image-select">
+        <ImageSelect />
+    </div>
+{/if}
 <div class="wrapper">
     <div class="sidebar left">
         <div class="logo">
@@ -19,7 +26,7 @@
         </div>
     </div>
     <div class="middle">
-        <img id="edited" style={$filterStyle + $transformStyle} crossorigin="anonymous" src="https://www.getpushing.com/wp-content/uploads/2016/10/camera-960x640.jpg" alt="">
+        <img id="edited" style={$filterStyle + $transformStyle} crossorigin="anonymous" src={$imageSource} alt="">
         <div class="toolbar">
             <Toolbar />
         </div>
@@ -31,8 +38,6 @@
         </div>
     </div>
 </div>
-
-
 
 <style lang="scss">
     @import "./colors.scss";
@@ -119,5 +124,11 @@
             bottom: 40px;
             display: flex;
         }
+    }
+    .image-select {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        z-index: 5;
     }
 </style>
