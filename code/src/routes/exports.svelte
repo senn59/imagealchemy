@@ -86,20 +86,22 @@
     @import "./colors";
     button {
         border: 0;
-        font-size: 20px;
+        font-size: 24px;
         display: flex;
         align-items: center;
         justify-content: center;
         border-radius: 15px;
-        padding: 2px 10px;
+        padding: 2px 10px 2px 6px;
         cursor: pointer;
         box-shadow: 
             $grey 0 0 0 4px,
             $grey 1px 2px 0 6px;
         color: white;
+        font-family: 'Darker Grotesque', sans-serif;
+        font-weight: 600;
         span {
-            padding-right: 10px;
-            transform: translateY(2px);
+            padding-right: 5px;
+            transform: translateY(4px);
         }
     }
     .copy { background-color: #2BCD27 }
