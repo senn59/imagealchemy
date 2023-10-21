@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from "svelte";
-    import { filters } from "$lib/stores";
+    import { filters, imageSource } from "$lib/stores";
 
     interface Preset {
         styles: {
@@ -23,8 +23,6 @@
     }
     let imageSrc: string;
     onMount(() => {
-        const imageElement: any = document.getElementById("edited");
-        imageSrc = imageElement.src;
         Object.keys(presets).forEach((preset) => {
             let styles: string[] = [];
             for (const [filter, value] of Object.entries(presets[preset].styles)) {
@@ -39,7 +37,7 @@
             $filters[filter].value = value;
         }
     }
-
+    // $: console.log(imageSource);
 </script>
 
 
@@ -48,7 +46,13 @@
     {#each Object.keys(presets) as key}
         <div class="preset" id={key}>
             <button on:click={() => applyPreset(key)}>
-                <img src="{imageSrc}" alt={key} style="{presets[key].css}"/>
+                <div class="box">
+                    {#if $imageSource}
+                        <img src="{$imageSource}" alt={key} style="{presets[key].css}"/>
+                    {:else}
+                    <p>{"<IMAGE>"}</p>
+                    {/if}
+                </div>
             </button>
             <p>{key[0].toUpperCase() + key.slice(1)}</p>
         </div>
@@ -63,14 +67,29 @@
             border: 0;
             background-color: transparent;
             cursor: pointer;
-            img {
-                background-color: $grey;
+            .box {
+                background-color: #D9D9D9;
                 box-shadow:
                 $grey 0 0 0 4px,
                 $grey 2px 3px 0 4px;
                 width: 250px;
                 height: 200px;
+                border-radius: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                p {
+                    opacity: 0.7;
+                    font-weight: 600;
+                    font-size: 28px;
+                }
+            }
+            img {
+                background-color: $grey;
+                width: 250px;
+                height: 200px;
                 object-fit: cover;
+                object-position: top;
                 border-radius: 10px;
             }
         }
