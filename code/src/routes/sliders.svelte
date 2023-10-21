@@ -13,5 +13,14 @@
     }
 </script>
 {#each Object.entries($filters) as [name, filter]}
-    <Slider name={filter.alias} bind:value={$filters[name].value}  min={filter.min} max={filter.max}/>
+    <div class="slider">
+        <Slider name={filter.alias} bind:value={$filters[name].value}  min={filter.min} max={filter.max}/>
+    </div>
 {/each}
+
+<style lang="scss">
+    .slider {
+        padding-bottom: 20px;
+        width: 80%;
+    }
+</style>

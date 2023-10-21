@@ -5,19 +5,41 @@
     export let value = 0;
 </script>
 
-<h2>{value}</h2>
 <div class="slider">
     <input type="range" bind:value id="slider-{name}" min="{min}" max="{max}">
-    <label for="range">{name}</label>
+    <label for="range">{name.toUpperCase()}: {value}</label>
 </div>
 
 <style lang="scss">
     @import "./colors.scss";
-    $sliderWidth: 80%;
-    //css reset
+    $track-box-shadow: 
+                $grey 0 0 0 4px,
+                $grey 2px 2px 0 5px;
+    $track-height: 15px;
+    $track-border-radius: 10px;
+    $track-progress-color: $slider;
+    $track-color: $sliderGrey;
+
+    $thumb-height: 30px;
+    $thumb-width: 12px;
+    $thumb-border-radius: 3px;
+    $thumb-color: $slider;
+    $thumb-box-shadow: $grey 0 0 0 4px;
+    .slider {
+        display: flex;
+        flex-direction: column-reverse;
+        label {
+            transform: translateX(3px);
+            margin-bottom: 12px;
+            font-weight: 800;
+            font-size: 18px;
+            color: $grey;
+        }
+    }
+    //reset range input default styling
     input[type="range"] {
         -webkit-appearance: none;
-        width: $sliderWidth;
+        width: 100%;
         background: transparent;
         &::-webkit-slider-thumb {
             -webkit-appearance: none;
@@ -40,24 +62,21 @@
     //thumb
     input[type="range"] {
         &::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            border: 1px solid #000000;
-            height: 36px;
-            width: 16px;
-            border-radius: 3px;
-            background: #ffffff;
-            cursor: pointer;
-            margin-top: -14px;
-            box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+            cursor: ew-resize;
+            height: $thumb-height;
+            width: $thumb-width;
+            border-radius: $thumb-border-radius;
+            background: $thumb-color;
+            box-shadow: $thumb-box-shadow;
+            margin-top: -6px;
         }
         &::-moz-range-thumb {
-            height: 36px;
-            width: 16px;
-            border-radius: 3px;
-            background: $slider;
-            cursor: pointer;
-            box-shadow: $grey 0 0 0 2px;
-
+            cursor: ew-resize;
+            height: $thumb-height;
+            width: $thumb-width;
+            border-radius: $thumb-border-radius;
+            background: $thumb-color;
+            box-shadow: $thumb-box-shadow;
         }
     }
 
@@ -65,27 +84,25 @@
     input[type="range"] {
         &::-webkit-slider-runnable-track {
             width: 100%;
-            height: 8.4px;
             cursor: pointer;
-            box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
-            background: #3071a9;
-            border-radius: 25px;
-            border: 0.2px solid #010101;
-        }
-        &::-webkit-slider-runnable-track {
-            background: yellow;
+            height: $track-height;
+            background: $track-color;
+            border-radius: $track-border-radius;
+            box-shadow: $track-box-shadow;
         }
 
         &::-moz-range-track, &::-moz-range-progress {
             width: 100%;
-            height: 15px;
             cursor: pointer;
-            background: $sliderGrey;
-            border-radius: 10px;
-            box-shadow: $grey 0 0 0 3px;
+            height: $track-height;
+            background: $track-color;
+            border-radius: $track-border-radius;
+        }
+        &::-moz-range-track {
+            box-shadow: $track-box-shadow;
         }
         &::-moz-range-progress {
-            background: $slider;
+            background: $track-progress-color;
             // border-radius: 10px 0 0 10px;
         }
 
