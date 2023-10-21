@@ -1,6 +1,8 @@
 import { writable, type Writable } from "svelte/store";
 import type { Filter } from "./types";
 
+export const imageSource: Writable<string> = writable("");
+
 export const filterStyle: Writable<string> = writable("");
 export const transformStyle: Writable<string> = writable("");
 /* 
