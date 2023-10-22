@@ -21,7 +21,7 @@
     }
 
     const handleClipboardPaste = (e: ClipboardEvent) => {
-        const items =e.clipboardData?.items; 
+        const items = e.clipboardData?.items; 
         if (!items) return;
         for (let i=0; i < items.length; i++) {
             const item: DataTransferItem = items[i];

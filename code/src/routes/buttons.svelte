@@ -5,11 +5,11 @@
     const download = () => {
         const canvas = getCanvasImage();
         if (!canvas) return;
-        window.open(canvas.toDataURL("image/png")) /* for testing purposes */
-        // let newWindow: Window | null = window.open();
-        // if (newWindow == null) return;
-        // newWindow.document.open();
-        // newWindow.document.write(`<img src="${canvas.toDataURL("image/png")}">`)
+        const downloadLink = document.createElement("a");
+        downloadLink.href = canvas.toDataURL("image/png");
+        downloadLink.download = "image.png";
+        downloadLink.click();
+        downloadLink.remove();
     }
 
     const copy = () => {

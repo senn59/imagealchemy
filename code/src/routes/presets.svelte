@@ -23,7 +23,7 @@
         "Vintage": {
             "styles": {
                 saturate: 150,
-                "hue-rotate": 45,
+                "hue-rotate": 25,
                 sepia: 30,
                 contrast: 120,
                 brightness: 80
@@ -102,7 +102,7 @@
     @import "./colors";
     .presets {
         .preset {
-            padding-bottom: 30px;
+            padding: 15px 0;
             button {
                 border-radius: 10px;
                 border: 0;

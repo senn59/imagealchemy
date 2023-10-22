@@ -45,6 +45,7 @@
 
     #edited {
         max-width: 75%;
+        max-height: 80%;
     }
     .wrapper {
         display: flex;
@@ -55,12 +56,12 @@
     .sidebar {
         height: 100vh;
         box-shadow: $grey 0 0 0 8px;
+        background: white;
         &.left {
             width: 600px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            background: white;
             .logo {
                 display: flex;
                 flex-direction: column;
@@ -100,18 +101,30 @@
                 font-weight: 800;
                 width: 250px;
                 margin: auto;
-                padding: 50px 0 40px 0;
+                padding: 50px 0 20px 0;
                 color: $grey;
             }
             .presets {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                height: calc(100% - (90px + 2.5rem)); 
+                height: calc(100% - (70px + 2.5rem)); 
                 overflow: auto;
+                scrollbar-color: $grey #FFF;
+                scrollbar-width: thin;
+                &::-webkit-scrollbar {
+                    width: 8px;
+                }
+                &::-webkit-scrollbar-track {
+                    background-color: #FFF;
+                }
+                &::-webkit-scrollbar-thumb {
+                    background-color: $grey;
+                }
             }
         }
     }
+
     .middle {
         width: 100%;
         height: 100vh;
