@@ -34,4 +34,20 @@ export const filters: Writable<{[key: string]: Filter}>  = writable({
         suffix: "%",
         alias: "sepia"
     },
+    "brightness": {
+        value: 100,
+        default: 100,
+        min: 50,
+        max: 300,
+        suffix: "%",
+        alias: "brightness"
+    },
+    "contrast": {
+        value: 100,
+        default: 100,
+        min: 50,
+        max: 300,
+        suffix: "%",
+        alias: "contrast"
+    },
 })

@@ -14,7 +14,7 @@
 </script>
 {#each Object.entries($filters) as [name, filter]}
     <div class="slider">
-        <Slider name={filter.alias} bind:value={$filters[name].value}  min={filter.min} max={filter.max}/>
+        <Slider name={filter.alias} bind:value={$filters[name].value}  min={filter.min} max={filter.max} suffix={filter.suffix}/>
     </div>
 {/each}
 
