@@ -1,7 +1,8 @@
 <script lang="ts">
-    export let name: string = "";
+    export let name: string;
     export let min: number = 0;
     export let max: number = 100;
+    export let suffix: string;
     export let value = 0;
 
     let inputEl: HTMLInputElement;
@@ -19,7 +20,7 @@
 
 <div class="slider">
     <input bind:this={inputEl} type="range" bind:value id="slider-{name}" min="{min}" max="{max}">
-    <label for="range">{name.toUpperCase()}: {value}</label>
+    <label for="range">{name.toUpperCase()}: {value}{suffix.toUpperCase()}</label>
 </div>
 
 <style lang="scss">
