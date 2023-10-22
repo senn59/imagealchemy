@@ -3,10 +3,22 @@
     export let min: number = 0;
     export let max: number = 100;
     export let value = 0;
+
+    let inputEl: HTMLInputElement;
+    const progressColor = "#BD00FF";
+    const defaultColor = "#BEBEBE";
+    //No psuedo element for range progress on chromium so we use js
+    $: if (inputEl && !navigator.userAgent.includes("Firefox")) {
+        const mappedValue = (value - min) * 100 / (max - min);
+        const css = `linear-gradient(to right,
+        ${progressColor} 0%, ${progressColor} ${mappedValue}%,
+        ${defaultColor} ${mappedValue}%, ${defaultColor} 100%)`;
+        inputEl.style.background = css;
+    }
 </script>
 
 <div class="slider">
-    <input type="range" bind:value id="slider-{name}" min="{min}" max="{max}">
+    <input bind:this={inputEl} type="range" bind:value id="slider-{name}" min="{min}" max="{max}">
     <label for="range">{name.toUpperCase()}: {value}</label>
 </div>
 
@@ -86,9 +98,9 @@
             width: 100%;
             cursor: pointer;
             height: $track-height;
-            background: $track-color;
             border-radius: $track-border-radius;
             box-shadow: $track-box-shadow;
+            //background set using JS
         }
 
         &::-moz-range-track, &::-moz-range-progress {
