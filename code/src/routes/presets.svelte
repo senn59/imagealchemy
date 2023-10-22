@@ -81,7 +81,7 @@
                 p {
                     opacity: 0.7;
                     font-weight: 600;
-                    font-size: 28px;
+                    font-size: 2rem;
                 }
             }
             img {
@@ -96,7 +96,7 @@
         p {
             margin-top: 5px;
             font-weight: bold;
-            font-size: 20px;
+            font-size: 1.3rem;
             color: $grey;
             transform: translateX(8px);
         }

@@ -44,8 +44,7 @@
     $margin: 100px;
 
     #edited {
-        width: 100%;
-        max-width: 55%;
+        max-width: 75%;
     }
     .wrapper {
         display: flex;
@@ -71,7 +70,7 @@
                 h1 {
                     margin-top: 5px;
                     color: $logoText;
-                    font-size: 48px;
+                    font-size: 3rem;
                     font-weight: 900;
                 }
                 img {
@@ -97,7 +96,7 @@
         &.right {
             width: 500px;
             h1 {
-                font-size: 36px;
+                font-size: 2.5rem;
                 font-weight: 800;
                 width: 250px;
                 margin: auto;
@@ -108,7 +107,6 @@
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                height: 100%;
             }
         }
     }

@@ -86,7 +86,7 @@
     @import "./colors";
     button {
         border: 0;
-        font-size: 24px;
+        font-size: 1.5rem;
         display: flex;
         align-items: center;
         justify-content: center;

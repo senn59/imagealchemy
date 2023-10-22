@@ -44,7 +44,7 @@
             transform: translateX(3px);
             margin-bottom: 12px;
             font-weight: 800;
-            font-size: 18px;
+            font-size: 1.15rem;
             color: $grey;
         }
     }
