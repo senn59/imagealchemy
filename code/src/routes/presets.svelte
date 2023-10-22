@@ -7,21 +7,60 @@
             saturate: number; //%
             "hue-rotate": number; //deg
             sepia: number; //%
+            contrast: number; //%
+            brightness: number;
         };
         css: string;
     }
+    // saturate: 100,
+    // hue-rotate: 0,
+    // sepia: 0,
+    // contrast: 100
+    // brightness 100
+
     //see the "filters" object for more info on the different filters per preset.
     const presets: {[key: string]: Preset} = {
-        "preset1": {
+        "Vintage": {
             "styles": {
-                "saturate": 200,
-                "hue-rotate": 50,
-                "sepia": 0,
+                saturate: 150,
+                "hue-rotate": 45,
+                sepia: 30,
+                contrast: 120,
+                brightness: 80
             },
             "css": "",
-        }
+        },
+        "Washed": {
+            "styles": {
+                saturate: 70,
+                "hue-rotate": 0,
+                sepia: 0,
+                contrast: 80,
+                brightness: 100
+            },
+            "css": "",
+        },
+        "Black & White": {
+            "styles": {
+                saturate: 0,
+                "hue-rotate": 0,
+                sepia: 0,
+                contrast: 120,
+                brightness: 100
+            },
+            "css": "",
+        },
+        "Sepia": {
+            "styles": {
+                saturate: 0,
+                "hue-rotate": 0,
+                sepia: 100,
+                contrast: 100,
+                brightness: 100
+            },
+            "css": "",
+        },
     }
-    let imageSrc: string;
     onMount(() => {
         Object.keys(presets).forEach((preset) => {
             let styles: string[] = [];
@@ -62,43 +101,46 @@
 <style lang="scss">
     @import "./colors";
     .presets {
-        button {
-            border-radius: 10px;
-            border: 0;
-            background-color: transparent;
-            cursor: pointer;
-            .box {
-                background-color: #D9D9D9;
-                box-shadow:
-                $grey 0 0 0 4px,
-                $grey 2px 3px 0 4px;
-                width: 250px;
-                height: 200px;
+        .preset {
+            padding-bottom: 30px;
+            button {
                 border-radius: 10px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                p {
-                    opacity: 0.7;
-                    font-weight: 600;
-                    font-size: 2rem;
+                border: 0;
+                background-color: transparent;
+                cursor: pointer;
+                .box {
+                    background-color: #BEBEBE;
+                    box-shadow:
+                    $grey 0 0 0 4px,
+                    $grey 2px 3px 0 4px;
+                    width: 250px;
+                    height: 200px;
+                    border-radius: 10px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    p {
+                        opacity: 0.7;
+                        font-weight: 600;
+                        font-size: 2rem;
+                    }
+                }
+                img {
+                    background-color: $grey;
+                    width: 250px;
+                    height: 200px;
+                    object-fit: cover;
+                    object-position: top;
+                    border-radius: 10px;
                 }
             }
-            img {
-                background-color: $grey;
-                width: 250px;
-                height: 200px;
-                object-fit: cover;
-                object-position: top;
-                border-radius: 10px;
+            p {
+                margin-top: 5px;
+                font-weight: bold;
+                font-size: 1.3rem;
+                color: $grey;
+                transform: translateX(8px);
             }
-        }
-        p {
-            margin-top: 5px;
-            font-weight: bold;
-            font-size: 1.3rem;
-            color: $grey;
-            transform: translateX(8px);
         }
     }
 </style>
