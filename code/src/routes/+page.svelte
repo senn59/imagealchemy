@@ -1,7 +1,7 @@
 <script lang="ts">
     import Sliders from "./sliders.svelte";
     import Toolbar from "./toolbar.svelte";
-    import Exports from "./exports.svelte";
+    import Buttons from "./buttons.svelte";
     import Presets from "./presets.svelte";
     import ImageSelect from "./image-select.svelte";
     import { filterStyle, imageSource, transformStyle } from "$lib/stores";
@@ -22,7 +22,7 @@
             <Sliders />
         </div>
         <div class="buttons">
-            <Exports />
+            <Buttons />
         </div>
     </div>
     <div class="middle">

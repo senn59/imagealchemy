@@ -10,6 +10,7 @@
     let flipIconColor = defaultColor;
 
     const rotate = () => {
+        return;
         const newRotationValue = rotation + 90;
         rotation = newRotationValue == 360 ? 0 : newRotationValue;
     }
@@ -17,24 +18,28 @@
         shouldFlip = !shouldFlip;
         flipIconColor = shouldFlip ? activeColor : defaultColor;
     }
-    const crop = () => {
-        //To be implemented
-        console.log("Crop");
-    }
+    const crop = () => undefined;
     $: {
-        let flipStyle: string = "scaleX(1)";
         let rotationStyle: string = `rotate(${rotation}deg)`;
-        if (shouldFlip) flipStyle = "scaleX(-1)";
+        let flipStyle: string = shouldFlip ? "scaleX(-1)" : "scaleX(1)";
         transformStyle.set(`transform: ${rotationStyle} ${flipStyle};`);
     }
 </script>
 
 <div class="buttons">
-    <button on:click={rotate}><Icon icon="tabler:rotate" height="24" color="#2E2E2E" /></button>
+    <button on:click={rotate}>
+        <Icon icon="tabler:rotate" height="24" color="#2E2E2E70" />
+        <span class="tooltip">WIP</span>
+    </button>
     <div class="seperator" />
-    <button on:click={flip}><Icon icon="material-symbols:flip" height="24" color="#{flipIconColor}" /></button>
+    <button on:click={flip}>
+        <Icon icon="material-symbols:flip" height="24" color="#{flipIconColor}" />
+    </button>
     <div class="seperator" />
-    <button on:click={crop}><Icon icon="material-symbols:crop" height="24" color="#2E2E2E" /></button>
+    <button on:click={crop}>
+        <Icon icon="material-symbols:crop" height="24" color="#2E2E2E70" />
+        <span class="tooltip">WIP</span>
+    </button>
 </div>
 
 <style lang="scss">
@@ -53,9 +58,22 @@
             padding: 0;
             background-color: transparent;
             padding: 4px 8px;
-            cursor: pointer;
-            &:nth-child(5) {
-                cursor: not-allowed;
+            cursor: not-allowed;
+            &:nth-child(3) {
+                cursor: pointer;
+            }
+            &:hover .tooltip {
+                display: inline-block;
+            }
+            .tooltip {
+                background-color: $grey;
+                padding: 2px 6px;
+                border-radius: 5px;
+                position: absolute;
+                font-size: 1rem;
+                top: 10px;
+                display: none;
+                color: white;
             }
         }
         .seperator {
