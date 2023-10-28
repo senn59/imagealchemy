@@ -12,14 +12,19 @@
         };
         css: string;
     }
-    // saturate: 100,
-    // hue-rotate: 0,
-    // sepia: 0,
-    // contrast: 100
-    // brightness 100
-
+    
     //see the "filters" object for more info on the different filters per preset.
     const presets: {[key: string]: Preset} = {
+        "Normal": {
+            "styles": {
+                saturate: 100,
+                "hue-rotate": 0,
+                sepia: 0,
+                contrast: 100,
+                brightness: 100
+            },
+            "css": "",
+        },
         "Vintage": {
             "styles": {
                 saturate: 150,
