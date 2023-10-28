@@ -4,13 +4,29 @@
     import Buttons from "./buttons.svelte";
     import Presets from "./presets.svelte";
     import ImageSelect from "./image-select.svelte";
+    import Popup from "./popup.svelte";
     import { filterStyle, imageSource, transformStyle } from "$lib/stores";
+	import { onMount } from "svelte";
+    let showPopup: boolean = false;
+    onMount(() => {
+        const popupItem = localStorage.getItem("popup");
+        if (!popupItem || !JSON.parse(popupItem)) {
+            showPopup = true
+        }
+        console.log(showPopup);
+    })
+    $: console.log(showPopup)
 </script>
-
-{#if !$imageSource}
-    <div class="image-select">
-        <ImageSelect />
+{#if showPopup}
+    <div class="popup">
+        <Popup />
     </div>
+{:else}
+    {#if !$imageSource}
+        <div class="popup">
+            <ImageSelect />
+        </div>
+    {/if}
 {/if}
 <div class="wrapper">
     <div class="sidebar left">
@@ -138,7 +154,7 @@
             display: flex;
         }
     }
-    .image-select {
+    .popup{
         position: fixed;
         width: 100%;
         height: 100%;
