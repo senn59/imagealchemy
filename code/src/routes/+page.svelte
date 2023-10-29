@@ -5,6 +5,7 @@
     import Presets from "./presets.svelte";
     import ImageSelect from "./image-select.svelte";
     import Popup from "./popup.svelte";
+    import Help from "./help.svelte";
     import { filterStyle, imageSource, transformStyle, showPopup } from "$lib/stores";
 	import { onMount } from "svelte";
     onMount(() => {
@@ -42,6 +43,9 @@
         <img id="edited" style={$filterStyle + $transformStyle} crossorigin="anonymous" src={$imageSource} alt="">
         <div class="toolbar">
             <Toolbar />
+        </div>
+        <div class="help">
+            <Help />
         </div>
     </div>
     <div class="sidebar right">
@@ -145,10 +149,16 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
+        position: relative;
         .toolbar {
             position: absolute;
             bottom: 40px;
             display: flex;
+        }
+        .help {
+            position: absolute;
+            bottom: 40px;
+            right: 40px;
         }
     }
     .popup{
