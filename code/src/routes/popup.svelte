@@ -1,8 +1,9 @@
 <script lang="ts">
     import Icon from '@iconify/svelte';
-
+    import { showPopup } from '$lib/stores';
     const closeHandler = (e: Event) => {
-        console.log("button clicked");
+        showPopup.set(false);
+        localStorage.setItem("popup", "false");
     }
 </script>
 <div class="wrapper">

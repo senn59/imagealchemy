@@ -5,19 +5,16 @@
     import Presets from "./presets.svelte";
     import ImageSelect from "./image-select.svelte";
     import Popup from "./popup.svelte";
-    import { filterStyle, imageSource, transformStyle } from "$lib/stores";
+    import { filterStyle, imageSource, transformStyle, showPopup } from "$lib/stores";
 	import { onMount } from "svelte";
-    let showPopup: boolean = false;
     onMount(() => {
-        const popupItem = localStorage.getItem("popup");
-        if (!popupItem || !JSON.parse(popupItem)) {
-            showPopup = true
+        const popupSession = localStorage.getItem("popup");
+        if (!popupSession || JSON.parse(popupSession)) {
+            showPopup.set(true)
         }
-        console.log(showPopup);
     })
-    $: console.log(showPopup)
 </script>
-{#if showPopup}
+{#if $showPopup}
     <div class="popup">
         <Popup />
     </div>

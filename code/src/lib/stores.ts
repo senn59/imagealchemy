@@ -2,9 +2,9 @@ import { writable, type Writable } from "svelte/store";
 import type { Filter } from "./types";
 
 export const imageSource: Writable<string> = writable("");
-
 export const filterStyle: Writable<string> = writable("");
 export const transformStyle: Writable<string> = writable("");
+export const showPopup: Writable<boolean> = writable(false);
 /* 
     Object for adding css filter functions. For more info on available filter functions see the below link.
     https://developer.mozilla.org/en-US/docs/Web/CSS/filter
