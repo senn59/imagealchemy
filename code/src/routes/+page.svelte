@@ -19,12 +19,10 @@
     <div class="popup">
         <Popup />
     </div>
-{:else}
-    {#if !$imageSource}
-        <div class="popup">
-            <ImageSelect />
-        </div>
-    {/if}
+{:else if !$imageSource}
+    <div class="popup">
+        <ImageSelect />
+    </div>
 {/if}
 <div class="wrapper">
     <div class="sidebar left">
