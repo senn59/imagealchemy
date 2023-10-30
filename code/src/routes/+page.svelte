@@ -27,8 +27,10 @@
 <div class="wrapper">
     <div class="sidebar left">
         <div class="logo">
-            <img src="/logo.png" alt="flask">
-            <h1>ImageAlchemy</h1>
+            <button on:click={() => window.location.href = "/"}>
+                <img src="/logo.png" alt="flask">
+                <h1>ImageAlchemy</h1>
+            </button>
         </div>
         <div class="sliders">
             <Sliders />
@@ -78,19 +80,25 @@
             flex-direction: column;
             justify-content: space-between;
             .logo {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                padding-top: 50px;
-                width: 100%;
-                h1 {
-                    margin-top: 5px;
-                    color: $logoText;
-                    font-size: 3rem;
-                    font-weight: 900;
-                }
-                img {
-                width: 30%;
+                button {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    padding-top: 50px;
+                    width: 100%;
+                    border: 0;
+                    background-color: transparent;
+                    font: inherit;
+                    cursor: pointer;
+                    h1 {
+                        margin-top: 5px;
+                        color: $logoText;
+                        font-size: 3rem;
+                        font-weight: 900;
+                    }
+                    img {
+                        width: 30%;
+                    }
                 }
             }
             .sliders {
