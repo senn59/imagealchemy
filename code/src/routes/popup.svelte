@@ -1,5 +1,4 @@
 <script lang="ts">
-    import Icon from '@iconify/svelte';
     import { showPopup } from '$lib/stores';
     const closeHandler = (e: Event) => {
         showPopup.set(false);
@@ -10,7 +9,9 @@
     <div class="box">
         <div>
             <div class="close">
-                <button on:click={closeHandler}><Icon icon="octicon:x-12" height=34 /></button>
+                <button on:click={closeHandler}>
+                    <iconify-icon icon="octicon:x-12" height="34"></iconify-icon>
+                </button>
             </div>
             <h1>Welcome to ImageAlchemy! <span><img src="/logo.png" alt="logo"></span></h1>
             <p>

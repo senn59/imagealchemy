@@ -1,5 +1,4 @@
 <script lang="ts">
-    import Icon from "@iconify/svelte";
     import { transformStyle } from "$lib/stores";
 
     let rotation: number = 0;
@@ -28,22 +27,25 @@
 
 <div class="buttons">
     <button on:click={rotate}>
-        <Icon icon="tabler:rotate" height="24" color="#2E2E2E70" />
+        <iconify-icon icon="tabler:rotate" height="24" class="disabled"></iconify-icon>
         <span class="tooltip">WIP</span>
     </button>
     <div class="seperator" />
     <button on:click={flip}>
-        <Icon icon="material-symbols:flip" height="24" color="#{flipIconColor}" />
+        <iconify-icon icon="material-symbols:flip" height="24" style="color: #{flipIconColor}"></iconify-icon>
     </button>
     <div class="seperator" />
     <button on:click={crop}>
-        <Icon icon="material-symbols:crop" height="24" color="#2E2E2E70" />
+        <iconify-icon icon="material-symbols:crop" height=24 class="disabled"></iconify-icon>
         <span class="tooltip">WIP</span>
     </button>
 </div>
 
 <style lang="scss">
     @import "./colors";
+    .disabled {
+        color: #2e2e2e70;
+    }
     .buttons {
         display: flex;
         align-items: center;

@@ -1,17 +1,19 @@
 <script lang="ts">
-    import Icon from "@iconify/svelte";
     import { showPopup } from "$lib/stores";
 </script>
 
 
 <div>
     <button on:click={() => showPopup.set(true)}>
-        <Icon icon="fa6-solid:question" height=30 color="#2E2E2E" />
+        <iconify-icon icon="fa6-solid:question" height="30" class="icon"></iconify-icon>
     </button>
 </div>
 
 <style lang="scss">
     @import "./colors.scss";
+    .icon {
+        color: $grey;
+    }
     button {
         border: 0;
         padding: 8px;

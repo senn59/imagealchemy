@@ -1,5 +1,4 @@
 <script lang="ts">
-    import Icon from '@iconify/svelte';
     import { filterStyle, transformStyle } from '$lib/stores';
 
     const download = () => {
@@ -74,11 +73,11 @@
 </script>
 
 <button class="copy" on:click={copy}>
-    <span><Icon icon="ph:copy" color="white" height="30" /></span>
+    <span><iconify-icon icon="ph:copy" height="30"></iconify-icon></span>
     COPY
 </button>
 <button class="download" on:click={download}>
-    <span><Icon icon="material-symbols:download" color="white" height=30 /></span>
+    <span><iconify-icon icon="material-symbols:download" height="30"></iconify-icon></span>
     DOWNLOAD
 </button>
 
