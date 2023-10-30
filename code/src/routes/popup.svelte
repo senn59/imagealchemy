@@ -14,7 +14,8 @@
             </div>
             <h1>Welcome to ImageAlchemy! <span><img src="/logo.png" alt="logo"></span></h1>
             <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur id ipsum eget nisi vulputate maximus. Pellentesque enim dolor, luctus vel erat id, finibus aliquet eros. Cras nisl metus, imperdiet id dictum quis, tincidunt vitae elit. Maecenas et ex nec metus efficitur suscipit sed nec ipsum. Cras vehicula enim vel congue rutrum. Donec dolor sem, varius pulvinar sem nec, convallis accumsan dolor.
+                ImageAlchemy is an online image editing tool supporting pasting and copying options ensuring you don't necessarily need to download an image before editing it.
+                ImageAlchemy provides editable filter presets for images and a flip function with a rotate and crop function coming.
             </p>
             <img class="preview" src="/preview.png" alt="website preview">
         </div>
